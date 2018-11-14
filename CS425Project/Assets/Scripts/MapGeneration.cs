@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MapGeneration : MonoBehaviour {
 
-    public GameObject groundMidTop, groundLeftHill, groundRightHill, groundRightEnd, groundLeftEnd, bridge, spikes;
+    public GameObject groundMidTop, groundLeftHill, groundRightHill, groundRightEnd, groundLeftEnd, groundFill, groundLeftCHill, groundRightCHill, bridge, spikes;
     public int minPlatformSize = 1;
     public int maxPlatformSize = 10;
     public int maxHazardSpace = 3;
-    public int maxHeight = 2;
-    public int maxDrop = -2;
-    public int platforms = 50;
+    public int maxHeight = 1;
+    public int maxDrop = -1;
+    public int platforms = 100;
     [Range(0.0f, 1f)]
 
     public float hazardChance = .5f;
@@ -28,12 +28,16 @@ public class MapGeneration : MonoBehaviour {
         generateMap();
         
 	}
-	
+
     void generateMap()
     {
         //create the first ground platform
         Instantiate(groundLeftEnd, new Vector2(0, 0), Quaternion.identity);
         previousBlock = groundLeftEnd;
+        for (int i = -1; i > blockHeight - 10; i--)
+        {
+            Instantiate(groundFill, new Vector3(0, i), Quaternion.identity);
+        }
         nextHeight = Mathf.RoundToInt(Random.Range(maxDrop, maxHeight));
 
         for (int i = 1; i < platforms; i++)
@@ -54,18 +58,23 @@ public class MapGeneration : MonoBehaviour {
                 for (int j = 0; j < platformSize; j++)
                 {
                     Instantiate(groundMidTop, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    for (int x = blockHeight - 1; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     //move to the next platform
                     blockNum++;
                     previousHeight = blockHeight;
                     previousBlock = groundMidTop;
+
                 }
             }
 
             //if previousBlock = middle, then the next must either be another mid, uphill, or the right end.
-            else if(previousBlock == groundMidTop)
+            else if (previousBlock == groundMidTop)
             {
                 //if the same height, create another long platform
-                if(previousHeight == blockHeight)
+                if (previousHeight == blockHeight)
                 {
                     int platformSize = Mathf.RoundToInt(Random.Range(minPlatformSize, maxPlatformSize));
                     for (int j = 0; j < platformSize; j++)
@@ -73,26 +82,46 @@ public class MapGeneration : MonoBehaviour {
                         //if nextHeight = blockHeight createMid
                         Instantiate(groundMidTop, new Vector2(blockNum, blockHeight), Quaternion.identity);
                         //move to the next platform
+                        for (int x = blockHeight - 1; x > blockHeight - 10; x--)
+                        {
+                            Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                        }
                         blockNum++;
+                        
                     }
                     previousHeight = blockHeight;
                     previousBlock = groundMidTop;
                 }
-                
+
                 //if the current height is higher than previous one, create uphill
-                else if(previousHeight == blockHeight-1)
+                else if (previousHeight == blockHeight - 1)
                 {
                     Instantiate(groundLeftHill, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    Instantiate(groundLeftCHill, new Vector2(blockNum, blockHeight - 1), Quaternion.identity);
+                    for (int x = blockHeight - 2; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
                     previousHeight = blockHeight;
                     previousBlock = groundLeftHill;
                 }
                 //if the current height is lower than previous one, create downhill
-                else if(previousHeight == blockHeight +1)
+                else if (previousHeight == blockHeight + 1)
                 {
                     Instantiate(groundRightHill, new Vector2(blockNum, previousHeight), Quaternion.identity);
+                    Instantiate(groundRightCHill, new Vector2(blockNum, previousHeight - 1), Quaternion.identity);
+                    for (int x = previousHeight - 2; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
                     Instantiate(groundRightHill, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    Instantiate(groundRightCHill, new Vector2(blockNum, blockHeight - 1), Quaternion.identity);
+                    for (int x = blockHeight - 2; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
                     previousHeight = blockHeight;
                     previousBlock = groundRightHill;
@@ -101,8 +130,17 @@ public class MapGeneration : MonoBehaviour {
                 else if (Mathf.Abs(nextHeight - blockHeight) >= 2)
                 {
                     Instantiate(groundRightEnd, new Vector2(blockNum, previousHeight), Quaternion.identity);
+                    for (int x = previousHeight - 1; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
+
                     Instantiate(groundLeftEnd, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    for (int x = blockHeight - 1; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
                     previousHeight = blockHeight;
                     previousBlock = groundLeftEnd;
@@ -110,11 +148,16 @@ public class MapGeneration : MonoBehaviour {
 
             }
             //if previous block is left hill, the current block should be another left hill or middle
-            else if(previousBlock == groundLeftHill)
+            else if (previousBlock == groundLeftHill)
             {
                 if (previousHeight == blockHeight - 1)
                 {
                     Instantiate(groundLeftHill, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    Instantiate(groundLeftCHill, new Vector2(blockNum, blockHeight - 1), Quaternion.identity);
+                    for (int x = blockHeight - 2; x > blockHeight-10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
                     previousHeight = blockHeight;
                     previousBlock = groundLeftHill;
@@ -123,27 +166,37 @@ public class MapGeneration : MonoBehaviour {
                 {
                     blockHeight = previousHeight;
                     int platformSize = Mathf.RoundToInt(Random.Range(minPlatformSize, maxPlatformSize));
+
                     for (int j = 0; j < platformSize; j++)
                     {
                         //if nextHeight = blockHeight createMid
                         Instantiate(groundMidTop, new Vector2(blockNum, blockHeight), Quaternion.identity);
                         //move to the next platform
+                        for (int x = blockHeight - 1; x > blockHeight - 10; x--)
+                        {
+                            Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                        }
                         blockNum++;
                     }
                     previousHeight = blockHeight;
                     previousBlock = groundMidTop;
                 }
             }
-            else if(previousBlock == groundRightHill)
+            else if (previousBlock == groundRightHill)
             {
                 if (previousHeight == blockHeight + 1)
                 {
-                    Instantiate(groundLeftHill, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    Instantiate(groundRightHill, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                    Instantiate(groundRightCHill, new Vector2(blockNum, blockHeight - 1), Quaternion.identity);
+                    for (int x = blockHeight - 2; x > blockHeight - 10; x--)
+                    {
+                        Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                    }
                     blockNum++;
                     previousHeight = blockHeight;
-                    previousBlock = groundLeftHill;
+                    previousBlock = groundRightHill;
                 }
-                else if(previousHeight == blockHeight)
+                else if (previousHeight == blockHeight)
                 {
                     blockHeight -= 1;
                     nextHeight -= 1;
@@ -152,6 +205,10 @@ public class MapGeneration : MonoBehaviour {
                     {
                         //if nextHeight = blockHeight createMid
                         Instantiate(groundMidTop, new Vector2(blockNum, blockHeight), Quaternion.identity);
+                        for (int x = blockHeight - 1; x > blockHeight - 10; x--)
+                        {
+                            Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+                        }
                         //move to the next platform
                         blockNum++;
                     }
@@ -162,11 +219,23 @@ public class MapGeneration : MonoBehaviour {
             }
         }
         if (previousBlock != groundRightHill)
+        {
             Instantiate(groundRightEnd, new Vector2(blockNum, previousHeight), Quaternion.identity);
+            for (int x = previousHeight - 1; x > blockHeight - 10; x--)
+            {
+                Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+            }
+        }
         else
+        {
             Instantiate(groundRightEnd, new Vector2(blockNum, previousHeight - 1), Quaternion.identity);
+            for (int x = previousHeight - 2; x > blockHeight - 10; x--)
+            {
+                Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
+            }
+        }
     }
-
+    
     void generateMap2()
     {
         //create the first ground platform

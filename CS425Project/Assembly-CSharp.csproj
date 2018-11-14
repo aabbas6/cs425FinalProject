@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\MapGeneration.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/flips/Desktop/Project/cs425FinalProject/CS425Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
