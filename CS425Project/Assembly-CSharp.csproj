@@ -62,7 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\Scripts\Chase.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemyBaseFSM.cs" />
+    <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\Idle.cs" />
+    <Compile Include="Assets\Scripts\MapBehavior.cs" />
     <Compile Include="Assets\Scripts\MapGeneration.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <None Include="Assets\Prefab\Knight Files\Read Me.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/flips/Desktop/Project/cs425FinalProject/CS425Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
