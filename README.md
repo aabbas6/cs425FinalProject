@@ -10,25 +10,38 @@
  This will be for areas that the player will explore.
  
 **AI**
- Simple state machine that includes pathfinding and attack mechanisms for the beasts.
+-	Simple state machine that includes pathfinding and attack mechanisms for the beasts.
  
 ###Game Engine
-Unity 2D
+-	Unity 2D
 
 
 ###Tasks
 
 - [ ] Access to Assets
-- [ ] Procedural Generation of Map
+- [x] Procedural Generation of Map
 - [ ] Create Monsters
 - [ ] Apply AI to Monsters
-- [ ] Character Controller
+- [x] Character Controller
 - [ ] ReadMeFile 
-- 
 
 ###Logs
 
-**11/12/2018
-	Created Github Repository
-	Create Tile Assets
-	
+-	**11/12/2018
+	  - Created Github Repository
+	  - Create Tile Assets
+
+-	**11/18/2018
+	  - Created Basic Main Tile Random Generation
+	  
+-	**11/20/2018
+	  - Created Second Platform Random Generation
+	  - Created Character Controller / Animation
+
+-	**11/22/2018
+	  - Create Second Platform Tiles <needs polishing>
+	  - Allow Second Platform to be able to jump through
+	  
+-	**11/26/2018 - 11/27/2018
+	  - Started on AI FSM
+	 
