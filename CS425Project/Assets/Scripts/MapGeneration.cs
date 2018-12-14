@@ -68,7 +68,7 @@ public class MapGeneration : MonoBehaviour {
 
             if(Mathf.Abs(blockHeight - previousHeight) >= 2)
             {
-                Debug.Log("wtf is this shit. previousBlock is " + previousBlock + " currentHeight " + blockHeight  + " nextHeight " + nextHeight);
+                ////Debug.Log("wtf is this shit. previousBlock is " + previousBlock + " currentHeight " + blockHeight  + " nextHeight " + nextHeight);
             }
             //generate our main tiles
 
@@ -86,7 +86,7 @@ public class MapGeneration : MonoBehaviour {
                     }
                     //move to the next platform
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     previousHeight = blockHeight;
                     previousBlock = groundMidTop;
 
@@ -97,7 +97,7 @@ public class MapGeneration : MonoBehaviour {
             else if (previousBlock == groundMidTop)
             {
                 //if the same height, create another long platform
-                Debug.Log("next Height" + nextHeight);
+               // //Debug.Log("next Height" + nextHeight);
                 if (previousHeight == blockHeight)
                 {
                     int platformSize = Mathf.RoundToInt(Random.Range(minPlatformSize, maxPlatformSize));
@@ -111,7 +111,7 @@ public class MapGeneration : MonoBehaviour {
                             Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                         }
                         blockNum++;
-                        Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                        ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
 
                     }
                     previousHeight = blockHeight;
@@ -128,7 +128,7 @@ public class MapGeneration : MonoBehaviour {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     previousHeight = blockHeight;
                     previousBlock = groundLeftHill;
                 }
@@ -142,7 +142,7 @@ public class MapGeneration : MonoBehaviour {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     Instantiate(groundRightHill, new Vector2(blockNum, blockHeight), Quaternion.identity);
                     Instantiate(groundRightCHill, new Vector2(blockNum, blockHeight - 1), Quaternion.identity);
                     for (int x = blockHeight - 2; x > blockHeight - 10; x--)
@@ -150,7 +150,7 @@ public class MapGeneration : MonoBehaviour {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     previousHeight = blockHeight;
                     previousBlock = groundRightHill;
                 }
@@ -163,14 +163,14 @@ public class MapGeneration : MonoBehaviour {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     Instantiate(groundLeftEnd, new Vector2(blockNum, blockHeight), Quaternion.identity);
                     for (int x = blockHeight - 1; x > blockHeight - 10; x--)
                     {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     previousHeight = blockHeight;
                     previousBlock = groundLeftEnd;
                 }
@@ -188,7 +188,7 @@ public class MapGeneration : MonoBehaviour {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     previousHeight = blockHeight;
                     previousBlock = groundLeftHill;
                 }
@@ -207,7 +207,7 @@ public class MapGeneration : MonoBehaviour {
                             Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                         }
                         blockNum++;
-                        Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                        ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     }
                     previousHeight = blockHeight;
                     previousBlock = groundMidTop;
@@ -225,7 +225,7 @@ public class MapGeneration : MonoBehaviour {
                         Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                     }
                     blockNum++;
-                    Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                    ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                     previousHeight = blockHeight;
                     previousBlock = groundRightHill;
                 }
@@ -242,7 +242,7 @@ public class MapGeneration : MonoBehaviour {
                         {
                             Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                         }
-                        Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                        ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                         //move to the next platform
                         blockNum++;
                     }
@@ -262,7 +262,7 @@ public class MapGeneration : MonoBehaviour {
                         {
                             Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
                         }
-                        Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+                        ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
                         //move to the next platform
                         blockNum++;
                     }
@@ -300,41 +300,41 @@ public class MapGeneration : MonoBehaviour {
                             backgroundObj.transform.localScale = new Vector3(backgroundObj.transform.localScale.x * platformSize / 2, backgroundObj.transform.localScale.y, .1f);
                         }
                     }
-                    //Debug.Log("platformSize " + platformSize + " blockNum " + blockNum + " current " + currentBlockNum);
+                    ////Debug.Log("platformSize " + platformSize + " blockNum " + blockNum + " current " + currentBlockNum);
                 }
                 Instantiate(platformRight, new Vector2(currentBlockNum, blockHeight + randomHeight), Quaternion.identity);
             }
 
             if( Random.value < .3f && i > platforms/2 && hasSpawnedBoss == false )
             {
-                Instantiate(boss, new Vector2(i, blockHeight + 30), Quaternion.identity);
+                //Instantiate(boss, new Vector2(i, blockHeight + 30), Quaternion.identity);
                 hasSpawnedBoss = true;
             }
-            //Debug.Log("Platforms" + platforms + " blockNum " + blockNum + " blockHeight" + blockHeight);
+            ////Debug.Log("Platforms" + platforms + " blockNum " + blockNum + " blockHeight" + blockHeight);
         }
 
         //create the final main tile
         if (previousBlock != groundRightHill)
         {
-            Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+            ////Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
             Instantiate(groundRightEnd, new Vector2(blockNum, previousHeight), Quaternion.identity);
             for (int x = blockHeight-1; x > blockHeight-10; x--)
             {
                 Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
-                Debug.Log("bH " + blockHeight + " x " + x + "previousHeight " + previousHeight);
+                //Debug.Log("bH " + blockHeight + " x " + x + "previousHeight " + previousHeight);
             }
-           // Debug.Log("bH " + blockHeight);
+           // //Debug.Log("bH " + blockHeight);
         }
         else
         {
-            Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
+            //Debug.Log(blockNum + " currentHeight " + blockHeight + " Previous Height:" + previousHeight + " nextHeight " + nextHeight + " previousBlock" + previousBlock + " next Height " + nextHeight);
             Instantiate(groundRightEnd, new Vector2(blockNum, previousHeight - 1), Quaternion.identity);
             for (int x = blockHeight-1; x > blockHeight - 10; x--)
             {
                 Instantiate(groundFill, new Vector3(blockNum, x), Quaternion.identity);
-                Debug.Log("bH " + blockHeight + " x " + x + "previousHeight " + previousHeight);
+                //Debug.Log("bH " + blockHeight + " x " + x + "previousHeight " + previousHeight);
             }
-            //Debug.Log("this is the end");
+            ////Debug.Log("this is the end");
         }
         //create right boundary
         for(int i = blockHeight - 10; i < blockHeight + 10; i++)

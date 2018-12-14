@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33115576371297476}
   - component: {fileID: 23087152139976342}
   - component: {fileID: 61204820217928328}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: grassRightEnd
   m_TagString: ground
   m_Icon: {fileID: 0}

@@ -13,17 +13,23 @@ public class CharacterMovement : MonoBehaviour
     private bool isFlipped;
 
     private bool airborne;
+
+    public int health = 100;
+    
 	// Use this for initialization
 	void Start ()
     {
         playerRB = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
 	}
 
     void Update()
     {
+        if(health <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
         if(Input.GetButtonDown("Jump") && airborne == false)
         {
             playerRB.AddForce(Vector2.up * jumpSpeed);
@@ -31,8 +37,6 @@ public class CharacterMovement : MonoBehaviour
             airborne = true;
         }
         Physics2D.IgnoreLayerCollision(8,11, playerRB.velocity.y > 0);
-
-        
     }
     void FixedUpdate ()
     {
@@ -80,5 +84,14 @@ public class CharacterMovement : MonoBehaviour
     {
         animator.SetBool("airborne", false);
         airborne = false;
+    }
+
+    public int getHealth()
+    {
+        return health;
+    }
+    public void setHealth(int value)
+    {
+        health = value;
     }
 }
