@@ -12,9 +12,9 @@ public class EnemyAI : MonoBehaviour {
     private Rigidbody2D enemyRB;
     private SpriteRenderer enemyRend;
 
-    public int health = 100;
+    public int health = 1000;
     public bool dead = false;
-
+    public float deathTimer = 1f;
     public GameObject getPlayer()
     {
         return player;
@@ -42,26 +42,44 @@ public class EnemyAI : MonoBehaviour {
         detection = GameObject.Find("wallDetection");
         enemyRend = GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
-        fireBall = GetComponent<GameObject>();
-        firePoint = GetComponent<GameObject>();
         Physics2D.IgnoreLayerCollision(9, 11);
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        Physics2D.IgnoreLayerCollision(12, 10);
+        Physics2D.IgnoreLayerCollision(12, 11);
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         anim.SetFloat("distance", Vector2.Distance(transform.position, player.transform.position));
         anim.SetFloat("preferredDistance", Vector2.Distance(transform.position, player.transform.position));
+        if (health <= 0)
+        {
+            //Debug.Log("You killed it mate");
+            DeadMate();
+            
+        }
+    }
+
+    public void DeadMate()
+    {
+        anim.SetBool("Dead", true);
+        deathTimer -= Time.deltaTime;
+        if (deathTimer < 0)
+            Destroy(gameObject);
     }
 
     public void Attack1()
     {
         anim.SetInteger("Action", 0);
-        if(Mathf.Abs(player.transform.position.x - transform.position.x) < 1)
+        if(Mathf.Abs(player.transform.position.x - transform.position.x) < 3)
         {
-            int phealth = player.GetComponent<CharacterMovement>().getHealth();
-            phealth -= 50;
-            player.GetComponent<CharacterMovement>().setHealth(phealth);
+            if (!player.GetComponent<CharacterMovement>().isInvulnerable())
+            {
+                int phealth = player.GetComponent<CharacterMovement>().getHealth();
+                phealth -= 25;
+                player.GetComponent<CharacterMovement>().setHealth(phealth);
+                player.GetComponent<CharacterMovement>().setHit(true);
+            }
         }
     }
 
@@ -70,6 +88,15 @@ public class EnemyAI : MonoBehaviour {
         anim.SetInteger("Action", 0);
         GameObject fb = Instantiate(fireBall, firePoint.transform.position, transform.rotation);
         fb.GetComponent<Rigidbody2D>().AddForce(transform.forward * 10f);
+    }
+
+    public int getHealth()
+    {
+        return health;
+    }
+    public void setHealth(int value)
+    {
+        health = value;
     }
     
  

@@ -63,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58712293918021582
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 0
+  explosion: {fileID: 1073112404619304, guid: 4a57a2e33e47734468071448687b3800, type: 2}
 --- !u!212 &212780509029859308
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public class ChooseAction : StateMachineBehaviour {
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        int random = Random.Range(1, 2);
+        int random = Random.Range(1, 3);
         switch(random)
         {
             case 1:
