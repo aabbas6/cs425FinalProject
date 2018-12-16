@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
-public class Chase : StateMachineBehaviour {
-
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        //
-        base.OnStateEnter(animator, stateInfo, layIndex);
-=======
 
 
 public class Chase : EnemyBaseFSM {
@@ -17,21 +9,17 @@ public class Chase : EnemyBaseFSM {
     bool isFlipped = true; //check the sprite's direction
     bool isAirborne = false;
     Vector3 lastPosition;
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
->>>>>>> test
-	}
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-<<<<<<< HEAD
-	//
-	}
-=======
+
 
         GetDirection();
         
@@ -68,7 +56,6 @@ public class Chase : EnemyBaseFSM {
         }
     }
 
->>>>>>> test
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
