@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Attack1.cs" />
     <Compile Include="Assets\Scripts\Attack2.cs" />
     <Compile Include="Assets\Scripts\Breather.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Chase.cs" />
     <Compile Include="Assets\Scripts\ChooseAction.cs" />
@@ -73,11 +74,16 @@
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\explosionTimer.cs" />
+    <Compile Include="Assets\Scripts\hitParticle.cs" />
     <Compile Include="Assets\Scripts\Idle.cs" />
     <Compile Include="Assets\Scripts\MapBehavior.cs" />
     <Compile Include="Assets\Scripts\MapGeneration.cs" />
+    <Compile Include="Assets\Scripts\playerDetection.cs" />
+    <Compile Include="Assets\Scripts\PlayGame.cs" />
     <Compile Include="Assets\Scripts\projectile.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
+    <Compile Include="Assets\Scripts\TryAgain.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
     <None Include="Assets\Prefab\Knight Files\Read Me.txt" />
     <None Include="Assets\Prefab\Dragon Warrior Files\Read Me.txt" />
     <Reference Include="UnityEditor.StandardEvents">

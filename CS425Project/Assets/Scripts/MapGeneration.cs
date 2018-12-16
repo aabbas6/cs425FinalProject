@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -307,7 +308,7 @@ public class MapGeneration : MonoBehaviour {
 
             if( Random.value < .3f && i > platforms/2 && hasSpawnedBoss == false )
             {
-                //Instantiate(boss, new Vector2(i, blockHeight + 30), Quaternion.identity);
+                Instantiate(boss, new Vector2(i, blockHeight + 30), Quaternion.identity);
                 hasSpawnedBoss = true;
             }
             ////Debug.Log("Platforms" + platforms + " blockNum " + blockNum + " blockHeight" + blockHeight);
@@ -345,3 +346,4 @@ public class MapGeneration : MonoBehaviour {
     }
     
 }
+

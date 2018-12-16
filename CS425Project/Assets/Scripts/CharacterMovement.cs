@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float jumpSpeed = 250f;
     public GameObject character;
     public GameObject attackCol;
+    public GameObject hitParticle;
     public Collider2D attackTrigger;
     private Rigidbody2D playerRB;
     private Animator animator;
@@ -18,15 +20,15 @@ public class CharacterMovement : MonoBehaviour
     private float attackCD = 0.3f;
     public bool isHit = false;
     private bool airborne;
-
+    
     public int health = 100;
 
     public float invulnerableTimer = 0.0f;
     public bool isInvul = false;
     public float spriteBlinkingMiniDuration = 0.3f;
     public float spriteBlinkingTimer = 0.0f;
-    
 
+    private float timeTilGameOverScreen = 2f;
     // Use this for initialization
 	void Start ()
     {
@@ -108,10 +110,6 @@ public class CharacterMovement : MonoBehaviour
                 attackTimer = attackCD;
                 attackTrigger.enabled = true;
             }
-            
-          
-           
-
         }
 	}
     void OnCollisionEnter2D(Collision2D collision)
@@ -124,8 +122,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (isAttacking == true && collision.gameObject.tag == "enemy")
         {
-            Debug.Log("youhitboi");
-
+            Instantiate(hitParticle, attackCol.transform.position, Quaternion.identity);
             int enemyHealth = collision.GetComponent<EnemyAI>().getHealth();
             enemyHealth -= 10;
             collision.GetComponent<EnemyAI>().setHealth(enemyHealth);

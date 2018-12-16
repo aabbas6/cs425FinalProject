@@ -1,7 +1,8 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class EnemyAI : MonoBehaviour {
 
     public GameObject player;
@@ -12,7 +13,7 @@ public class EnemyAI : MonoBehaviour {
     private Rigidbody2D enemyRB;
     private SpriteRenderer enemyRend;
 
-    public int health = 1000;
+    public int health = 500;
     public bool dead = false;
     public float deathTimer = 1f;
     public GameObject getPlayer()
@@ -65,7 +66,10 @@ public class EnemyAI : MonoBehaviour {
         anim.SetBool("Dead", true);
         deathTimer -= Time.deltaTime;
         if (deathTimer < 0)
+        {
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
 
     public void Attack1()
@@ -104,3 +108,4 @@ public class EnemyAI : MonoBehaviour {
     
 
 }
+
