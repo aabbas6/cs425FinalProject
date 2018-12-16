@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ground
+  - secondPlatform
+  - player
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -13,11 +17,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - player
+  - enemy
+  - ground
+  - secondPlatform
+  - projectile
   - 
   - 
   - 
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: enemy
+    uniqueID: 1642686141
+    locked: 0
+  - name: player
+    uniqueID: 3138877943
+    locked: 0
+  - name: ground
+    uniqueID: 724952619
+    locked: 0
+  - name: secondPlatform
+    uniqueID: 1573906933
     locked: 0
