@@ -187,7 +187,7 @@ MonoBehaviour:
   detection: {fileID: 1939297267276588}
   fireBall: {fileID: 1279571191970166, guid: 53adc7b71092c2f40b1ce8c0b039d2e7, type: 2}
   firePoint: {fileID: 1537084978257178}
-  health: 1000
+  health: 200
   dead: 0
   deathTimer: 1
 --- !u!212 &212726327577536460

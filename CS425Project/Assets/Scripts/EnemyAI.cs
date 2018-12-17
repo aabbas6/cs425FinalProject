@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour {
     private Rigidbody2D enemyRB;
     private SpriteRenderer enemyRend;
 
-    public int health = 500;
+    public int health = 100;
     public bool dead = false;
     public float deathTimer = 1f;
     public GameObject getPlayer()
